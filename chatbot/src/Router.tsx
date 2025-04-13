@@ -1,13 +1,15 @@
 import { createBrowserRouter } from "react-router";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import PasswordReset from "./pages/PasswordReset";
+
 import Verify from "./pages/Verify";
 import ForgotPassword from "./pages/ForgotPassword";
+import Home from "./pages/Home";
+import LoggedInHome from "./pages/LoggedInHome";
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <h1>Home</h1>,
+    path: "/home",
+    element: <Home />,
   },
   {
     path: "/Login",
@@ -24,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "verify",
     element: <Verify />,
+  },
+  {
+    path: "/LoggedIn",
+    element: <LoggedInHome />,
   },
 ]);
 

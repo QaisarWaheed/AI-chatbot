@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import OTP from "../components/input/Otp";
 import {
   EmailIcon,
@@ -32,7 +32,7 @@ const ForgotPassword = () => {
               navigate("/Signup");
             }
           }}
-          activeTab="Register"
+          activeTab="Login"
           options={["Login", "Register"]}
         />
         <InputField
@@ -67,7 +67,7 @@ const ForgotPassword = () => {
             className={`h-11 font-bold py-2 px-4 rounded shadow w-36 absolute right-0 
             ${
               isDisabled
-                ? "bg-white-600 text-gray-500"
+                ? "bg-gray-500 text-gray-500"
                 : "bg-custom-button hover:bg-blue-700"
             } 
             text-white`}
@@ -90,10 +90,10 @@ const ForgotPassword = () => {
           type="password"
           visibiltyIcon={Invisible}
           placeholder="Confirm New Password"
-          value={password}
+          value={Confirmpassword}
           icon={PasswordIcon}
           onChange={(event) => {
-            setPassword(event.target.value);
+            setConfirmPassword(event.target.value);
           }}
         />
         <button className="h-11 bg-custom-button hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow w-full">

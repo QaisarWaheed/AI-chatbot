@@ -56,7 +56,12 @@ const Login = () => {
             htmlFor="ForGotPassword"
             className="absolute right-0 hover:text-blue-400"
           >
-            <a href="/ForgotPassword">Forgot Password?</a>
+            <a
+              href="/ForgotPassword"
+              className="text-blue-400 hover:text-blue-800"
+            >
+              Forgot Password?
+            </a>
           </label>
         </div>
         <button

@@ -10,6 +10,7 @@ const Tabs = (props: TabsProps) => {
       {props.options.map((tab) => {
         return (
           <div
+            key={tab}
             onClick={() => {
               props.onTabClick(tab);
             }}

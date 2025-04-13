@@ -48,7 +48,7 @@ const Verify = () => {
             className={`h-11 font-bold py-2 px-4 rounded shadow w-36 absolute right-0 
               ${
                 isDisabled
-                  ? "bg-white-600 text-gray-500"
+                  ? "bg-gray-500 text-gray-500"
                   : "bg-custom-button hover:bg-blue-700"
               } 
               text-white`}

@@ -12,10 +12,13 @@ export default {
         "custom-gray2": "#00000040",
         "input-borders": "#D9D9D9",
         "custom-text": "#555555",
-        "Login-text": " #000000D9", // Add your custom teal color
+        "Login-text": " #000000D9",
+        "Home-logout": "#FFFFFF",
+        "Home-Borders": "#0000000B",
+        // Add your custom teal color
       },
     },
-  },
 
-  plugins: [],
+    plugins: [],
+  },
 };
