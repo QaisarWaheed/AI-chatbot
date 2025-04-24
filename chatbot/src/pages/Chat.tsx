@@ -39,7 +39,7 @@ const Chat = () => {
   return (
     <>
       <TopBar />
-      <div className="flex flex-1 items-center flex-col overflow-y-auto m-4 w-full ">
+      <div className="flex my-10 flex-1 items-start p-10 overflow-x-hidden flex-col overflow-y-auto w-full ">
         {chatArray.map((chat) => {
           return (
             <div
