@@ -4,11 +4,25 @@ import { useNavigate } from "react-router";
 import InputField from "../components/input/InputField";
 import { EmailIcon, PasswordIcon, visibleIcon } from "../components/Icons/svgs";
 import PasswordField from "../components/input/PasswordField";
+import { userAuth } from "../components/input/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { user, login, logout, isAuthenticated } = userAuth();
+
+  const handleLogin = () => {
+    const UserData = {
+      id: "123",
+      email: "qaiserwaheed00@gmail.com",
+      password: "hell",
+    };
+    if (email === UserData.email && password === UserData.password) {
+      navigate("/home");
+    }
+    login(UserData);
+  };
 
   return (
     <div className="flex  justify-center items-center align-middle w-full h-screen">
@@ -66,9 +80,7 @@ const Login = () => {
         </div>
         <button
           className="bg-custom-button hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow w-full"
-          onClick={async () => {
-            console.log("Login Success!");
-          }}
+          onClick={handleLogin}
         >
           Login
         </button>

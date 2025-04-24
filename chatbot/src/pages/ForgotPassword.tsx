@@ -10,15 +10,41 @@ import { useNavigate } from "react-router";
 import Tabs from "../components/input/Tabs";
 import InputField from "../components/input/InputField";
 import PasswordField from "../components/input/PasswordField";
+import { generateOTP } from "../components/input/functions/OtpGenerator";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
-  const [isDisabled, setisDisabled] = useState(false);
   const [text, setText] = useState("Send OTP");
-  const [otp, setOtp] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Confirmpassword, setConfirmPassword] = useState("");
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [buttonText, setButtonText] = useState("Send OTP");
+  const [otp, setOtp] = useState("");
+  const [generatedOTP, setGeneratedOTP] = useState("");
+
+  const handleSend = (event: any) => {
+    event.preventDefault();
+    const newOtp = generateOTP();
+    setGeneratedOTP(newOtp);
+    setIsDisabled(true);
+    setButtonText("Sent!");
+    console.log("Generated OTP:", newOtp);
+  };
+
+  const handleVerify = (event: any) => {
+    event.preventDefault();
+    if (otp === generatedOTP) {
+      navigate("/login");
+    } else {
+      console.log("Wrong OTP");
+    }
+  };
+
+  const handleChange = (event: any) => {
+    setOtp(event.target.value);
+  };
+
   return (
     <div className=" flex justify-center items-center align-middle w-full h-screen">
       <form className="w-[700px] flex flex-col gap-6">
@@ -51,18 +77,12 @@ const ForgotPassword = () => {
               type="text"
               icon={EmailIcon}
               value={otp}
-              onChange={(event) => {
-                setOtp(event.target.value);
-              }}
+              onChange={handleChange}
             />
           </div>
 
           <button
-            onClick={(event) => {
-              setisDisabled(true);
-              setText("Sent!");
-              console.log();
-            }}
+            onClick={handleSend}
             disabled={isDisabled}
             className={`h-11 font-bold py-2 px-4 rounded shadow w-36 absolute right-0 
             ${
@@ -96,8 +116,11 @@ const ForgotPassword = () => {
             setConfirmPassword(event.target.value);
           }}
         />
-        <button className="h-11 bg-custom-button hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow w-full">
-          Verify
+        <button
+          className="h-11 bg-custom-button hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow w-full"
+          onClick={handleVerify}
+        >
+          Change Password
         </button>
         <div className="flex justify-center align-middle space-x-1">
           <label className="text-custom-text">Already have an Account?</label>

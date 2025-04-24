@@ -5,7 +5,8 @@ import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
-import LoggedInHome from "./pages/LoggedInHome";
+import Chat from "./pages/Chat";
+
 const router = createBrowserRouter([
   {
     path: "/home",
@@ -28,8 +29,8 @@ const router = createBrowserRouter([
     element: <Verify />,
   },
   {
-    path: "/LoggedIn",
-    element: <LoggedInHome />,
+    path: "chat",
+    element: <Chat />,
   },
 ]);
 
