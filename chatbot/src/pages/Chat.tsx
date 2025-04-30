@@ -1,6 +1,6 @@
 import ChatComponent from "../components/input/ChatComponent";
-
 import TopBar from "../components/input/TopBar";
+import SideBar from "../components/input/SideBar";
 
 const Chat = () => {
   const chatArray = [
@@ -39,7 +39,8 @@ const Chat = () => {
   return (
     <>
       <TopBar />
-      <div className="flex my-10 flex-1 items-start p-10 overflow-x-hidden flex-col overflow-y-auto w-full ">
+      <SideBar />
+      <div className="flex my-10 flex-1 items-start p-10 overflow-x-hidden flex-col w-full ">
         {chatArray.map((chat) => {
           return (
             <div
@@ -50,7 +51,7 @@ const Chat = () => {
                     : "bg-gray-200 self-start text-left"
                 }`}
             >
-              <div className="m-2">{chat.message}</div>
+              <div className="m-2">{chat.message + " " + new Date()}</div>
             </div>
           );
         })}
