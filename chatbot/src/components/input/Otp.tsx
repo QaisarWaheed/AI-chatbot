@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { ChangeEvent, ReactNode } from "react";
 
 interface InputData {
   placeholder: string;
   type: string;
-  onChange: (event: any) => any;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => any;
   icon: ReactNode;
   value: string;
 }

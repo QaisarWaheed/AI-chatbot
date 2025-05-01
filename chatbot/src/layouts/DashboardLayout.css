@@ -1,0 +1,26 @@
+.dashboard-layout {
+  display: grid;
+  grid-template-areas:
+    "sider header"
+    "sider body";
+  grid-template-columns: 1fr 10fr;
+  grid-template-rows: auto 1fr;
+  background-color: #f7fbfd;
+
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  background-color: white;
+}
+
+.sider {
+  grid-area: sider;
+  background-color: rgba(229, 229, 229, 0.16);
+}
+
+.body {
+  grid-area: body;
+  overflow: scroll;
+}

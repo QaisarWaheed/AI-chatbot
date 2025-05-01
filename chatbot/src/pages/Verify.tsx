@@ -1,42 +1,37 @@
 import { useNavigate } from "react-router";
 import Tabs from "../components/input/Tabs";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { EmailIcon } from "../components/Icons/svgs";
 import OTP from "../components/input/Otp";
 import { generateOTP } from "../components/input/functions/OtpGenerator";
 
 const Verify = () => {
   const navigate = useNavigate();
-  const [isDisabled, setIsDisabled] = useState(false);
-  const [buttonText, setButtonText] = useState("Send OTP");
-  const [otp, setOtp] = useState("");
-  const [generatedOTP, setGeneratedOTP] = useState("");
 
-  const handleSend = (event: any) => {
-    event.preventDefault();
-    const newOtp = generateOTP();
-    setGeneratedOTP(newOtp);
-    setIsDisabled(true);
-    setButtonText("Sent!");
-    console.log("Generated OTP:", newOtp);
+  const [generatedOTP, setGeneratedOTP] = useState<string | null>(null);
+  const [otp, setOTP] = useState("");
+
+  const handleGenerateOTP = () => {
+    const newOTP = generateOTP();
+    setGeneratedOTP(newOTP);
   };
 
-  const handleVerify = (event: any) => {
-    event.preventDefault();
-    if (otp === generatedOTP) {
-      navigate("/home");
-    } else {
-      console.log("Wrong OTP");
-    }
-  };
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("HELLO");
 
-  const handleChange = (event: any) => {
-    setOtp(event.target.value);
+    if (generatedOTP !== otp) return;
+
+    navigate("/");
   };
 
   return (
     <div className="flex justify-center items-center align-middle w-full h-screen">
-      <form className="w-[700px] flex flex-col gap-6">
+      {generatedOTP}
+      <form
+        className="w-[700px] flex flex-col gap-6"
+        onSubmit={(e) => handleSubmit(e)}
+      >
         <Tabs
           onTabClick={(tab) => {
             console.log("Clicked", tab);
@@ -57,25 +52,20 @@ const Verify = () => {
               type="text"
               icon={EmailIcon}
               value={otp}
-              onChange={handleChange}
+              onChange={(e) => setOTP(e.target.value)}
             />
           </div>
           <button
-            onClick={handleSend}
-            disabled={isDisabled}
-            className={`h-11 font-bold py-2 px-4 rounded shadow w-36 absolute right-0 
-              ${
-                isDisabled
-                  ? "bg-gray-500 text-gray-500"
-                  : "bg-custom-button hover:bg-blue-700 text-white"
-              }`}
+            type="button"
+            onClick={() => handleGenerateOTP()}
+            className={`h-11 font-bold py-2 px-4 rounded shadow w-36 absolute right-0 bg-custom-button hover:bg-blue-700 text-white`}
           >
-            {buttonText}
+            {generatedOTP ? "Resend OTP" : "Send OTP"}
           </button>
         </div>
         <button
+          type="submit"
           className="h-11 bg-custom-button hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow w-full"
-          onClick={handleVerify}
         >
           Verify
         </button>

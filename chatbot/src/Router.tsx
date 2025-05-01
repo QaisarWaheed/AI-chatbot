@@ -6,10 +6,11 @@ import Verify from "./pages/Verify";
 import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
+import DashboardLayout from "./layouts/DashboardLayout";
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: <Home />,
   },
   {
@@ -30,7 +31,13 @@ const router = createBrowserRouter([
   },
   {
     path: "chat",
-    element: <Chat />,
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/chat",
+        element: <Chat />,
+      },
+    ],
   },
 ]);
 

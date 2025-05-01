@@ -1,15 +1,43 @@
-import React, { useState } from "react";
+import React, { CSSProperties, Fragment, useState } from "react";
 import { micIcon } from "../Icons/svgs";
+import { ScaleLoader } from "react-spinners";
 
 const ChatComponent = () => {
   const [prompt, setPrompt] = useState("");
-  return (
-    <div className="w-[768px] h-[214px] flex flex-col justify-center  mt-11 bg-white relative ">
-      <div className="bg-black w-full flex justify-center mb-3">
-        <label className="text-custom-button absolute top-6 text-2xl font-bold">
-          I'm here to listen. What's bothering you?
-        </label>
+
+  const [isVoiceMode, setIsVoiceMode] = useState(false);
+
+  const override: CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
+
+  if (isVoiceMode) {
+    return (
+      <div>
+        <ScaleLoader
+          color={"blue"}
+          loading={true}
+          cssOverride={override}
+          height={100}
+          width={5}
+          speedMultiplier={0.5}
+          barCount={40}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+
+        <div className="   right-[50%] bottom-[24px] bg-red-200 text-center">
+          <button>Mic</button>
+          <button onClick={() => setIsVoiceMode(false)}>X</button>
+        </div>
       </div>
+    );
+  }
+
+  return (
+    <div className="bg-white p-4 rounded-md shadow-2xl">
       <div>
         <textarea
           placeholder="Ask Any Thing"
@@ -20,19 +48,25 @@ const ChatComponent = () => {
           }}
         />
       </div>
-      <div className="space-x-16 absolute -left-0 w-full mt-24">
-        <label className="text-custom-button    h-11 text-xl px-4 py-1 border rounded">
-          Case Studies
-        </label>
-        <label className="text-custom-button    h-11 px-4 py-1  text-xl border rounded">
-          Articles
-        </label>
-        <label className="text-custom-button    h-11 px-4 py-1 text-xl border rounded">
-          Exercises
-        </label>
+      <div className="flex justify-between align-middle">
+        <div className="flex gap-4">
+          <button className="text-custom-button p-2 border rounded-md">
+            Case Studies
+          </button>
+          <button className="text-custom-button p-2  border rounded-md">
+            Articles
+          </button>
+          <button className="text-custom-button p-2 border rounded-md">
+            Exercises
+          </button>
+        </div>
 
-        <button className=" bg-custom-button absolute w-24 h-8 flex right-0 top-0 rounded-xl border hover:bg-blue-500 gap-2 text-white  justify-center items-center align-middle ">
-          {micIcon} voice
+        <button
+          type="button"
+          onClick={() => setIsVoiceMode(true)}
+          className=" bg-custom-button p-4 w-24 h-8 flex right-0 top-0 rounded-md border hover:bg-blue-500 gap-2 text-white  justify-center items-center align-middle "
+        >
+          {!!prompt ? <>Submit </> : <>{micIcon} voice</>}
         </button>
       </div>
     </div>

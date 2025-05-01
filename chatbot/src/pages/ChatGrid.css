@@ -1,0 +1,17 @@
+.chat-grid {
+  display: grid;
+  grid-template-areas:
+    "chat"
+    "input";
+  grid-template-rows: 1fr auto;
+  height: calc(100vh - 150px);
+}
+
+.chat-grid > .chat-section {
+  grid-area: chat;
+  overflow: scroll;
+}
+
+.chat-grid > .input-section {
+  grid-area: input;
+}

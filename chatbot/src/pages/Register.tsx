@@ -27,6 +27,7 @@ const Register = () => {
     e.preventDefault();
     if (
       email.length > 0 &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
       password.length > 0 &&
       confirmpassword === password &&
       gender != null &&
@@ -34,7 +35,7 @@ const Register = () => {
     ) {
       navigate("/verify");
     } else {
-      console.log("Some thing is missing");
+      console.log("Some thing is missing or email is in incorrect format");
       console.log(email);
       console.log(password);
       console.log(gender);

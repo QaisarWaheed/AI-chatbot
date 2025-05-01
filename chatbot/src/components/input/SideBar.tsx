@@ -7,9 +7,9 @@ const SideBar = () => {
   ];
 
   return (
-    <div className="w-36 bg-custom-text p-4 overflow-auto">
+    <div className=" p-4 overflow-auto">
       {chatHistory.map((chat, index) => (
-        <aside key={index} className="mb-4 text-white">
+        <aside key={index} className="mb-4">
           <div>{chat.chat}</div>
           <div className="text-sm">{chat.time.toLocaleTimeString()}</div>
         </aside>

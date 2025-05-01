@@ -28,7 +28,7 @@ const ForgotPassword = () => {
     const newOtp = generateOTP();
     setGeneratedOTP(newOtp);
     setIsDisabled(true);
-    setButtonText("Sent!");
+
     console.log("Generated OTP:", newOtp);
   };
 
@@ -92,7 +92,7 @@ const ForgotPassword = () => {
             } 
             text-white`}
           >
-            {text}
+            {buttonText}
           </button>
         </div>
         <PasswordField
