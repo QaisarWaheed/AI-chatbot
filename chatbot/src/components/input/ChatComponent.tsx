@@ -1,7 +1,8 @@
 import React, { CSSProperties, Fragment, useState } from "react";
 import { micIcon } from "../Icons/svgs";
 import { ScaleLoader } from "react-spinners";
-
+import { CiMicrophoneOn } from "react-icons/ci";
+import { IoMdCloseCircle } from "react-icons/io";
 const ChatComponent = () => {
   const [prompt, setPrompt] = useState("");
 
@@ -28,16 +29,20 @@ const ChatComponent = () => {
           data-testid="loader"
         />
 
-        <div className="   right-[50%] bottom-[24px] bg-red-200 text-center">
-          <button>Mic</button>
-          <button onClick={() => setIsVoiceMode(false)}>X</button>
+        <div className="   right-[50%] bottom-[24px]  text-center flex justify-between">
+          <button>
+            <CiMicrophoneOn size={30} />
+          </button>
+          <button onClick={() => setIsVoiceMode(false)}>
+            <IoMdCloseCircle size={30} />
+          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-white p-4 rounded-md shadow-2xl">
+    <div className="  p-4 rounded-md shadow-2xl  ">
       <div>
         <textarea
           placeholder="Ask Any Thing"
@@ -48,7 +53,7 @@ const ChatComponent = () => {
           }}
         />
       </div>
-      <div className="flex justify-between align-middle">
+      <div className="flex justify-between ">
         <div className="flex gap-4">
           <button className="text-custom-button p-2 border rounded-md">
             Case Studies
