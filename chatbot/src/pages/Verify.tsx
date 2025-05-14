@@ -18,16 +18,15 @@ const Verify = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("HELLO");
+    console.log(generateOTP);
 
     if (generatedOTP !== otp) return;
 
-    navigate("/");
+    navigate("/login");
   };
 
   return (
     <div className="flex justify-center items-center align-middle w-full h-screen">
-      {generatedOTP}
       <form
         className="w-[700px] flex flex-col gap-6"
         onSubmit={(e) => handleSubmit(e)}

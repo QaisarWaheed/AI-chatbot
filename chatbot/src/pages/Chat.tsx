@@ -15,7 +15,7 @@ const Chat = () => {
   ];
 
   return (
-    <div className="bg-gray-100 p-4">
+    <div className=" bg-white p-4">
       <div className="w-[50%] ml-auto mr-auto ">
         <div className="chat-grid">
           <div className="chat-section">
@@ -49,26 +49,6 @@ const Chat = () => {
           </div>
         </div>
       </div>
-      {/* <div className="overflow-auto h-[100%] p-8 md:p-12 w-[50%] ml-auto mr-auto">
-        <div className="flex flex-col w-full space-y-4 my-6">
-          {chatArray.map((chat, index) => (
-            <div
-              key={index}
-              className={`p-4 max-w-[75%] rounded-lg ${
-                chat.type === "prompt"
-                  ? "bg-blue-100 self-end text-right"
-                  : "bg-gray-200 self-start text-left"
-              }`}
-            >
-              <div>{chat.message}</div>
-              <div className="text-sm text-gray-500">{chat.time}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="w-full flex justify-center p-4">
-        <ChatComponent />
-      </div> */}
     </div>
   );
 };
